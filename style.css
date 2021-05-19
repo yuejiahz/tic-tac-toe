@@ -1,24 +1,31 @@
 h1{
     font-family: sans-serif;
     text-align: center;
-    font-size: 2.3rem;
+    font-size: 2.8rem;
+    padding: 1.5rem;
 }
 
 *{
     background-color: rgb(240, 235, 173);
+    margin: auto;
 }
 .space{
     background-color:#fefefe;
+    width:60.5px;
+    margin:0;
+    font-size: 3.0rem;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
 }
 
 #container{
-    margin:auto;
     display:grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    column-gap: 0.7rem;
-    row-gap: 0.7rem;
+    column-gap: 0.6rem;
+    row-gap: 0.6rem;
     background-color: black; 
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
 }
