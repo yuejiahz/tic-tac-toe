@@ -67,6 +67,7 @@ const playerTurns =((event)=>{
         gameBoardArr[event.target.id[0]][event.target.id[1]]=player1.markingChoice;
         player1Marking.push(Number(event.target.id));
         space.style.color='#de87a1';  
+        announce.textContent="PLAYER 2's turn : O";    
         displayController();
         player1.turn = false;
         player2.turn = true;
@@ -81,6 +82,7 @@ const playerTurns =((event)=>{
         gameBoardArr[event.target.id[0]][event.target.id[1]]=player2.markingChoice;
         player2Marking.push(Number(event.target.id));
         space.style.color='#6988d8';
+        announce.textContent="PLAYER 1's turn : X";    
         displayController();
         player1.turn = true;
         player2.turn = false;
@@ -96,6 +98,7 @@ const playerTurns =((event)=>{
 });
 
 function announceWinner(winner){
+    replay.style.display='block';
 
     if(winner=='player 1'){
         winner='Congratulations player 1! You Win!';
@@ -104,15 +107,20 @@ function announceWinner(winner){
     } else if(winner=='Fair game'){
         winner="It's a fair game.";
     }
-    
-   document.querySelector('#announce').textContent=winner;    
+  announce.textContent=winner;    
 }
 
 function reset(){
-
+window.location.reload(true);
 }
 
+document.querySelector('#announce').textContent="PLAYER 1's turn : X";    
 window.addEventListener('click', playerTurns);
+const replay=document.querySelector('#replay');
+const announce=document.querySelector('#announce');
+
+replay.addEventListener('click', reset);
+replay.style.display='none';
 
 })();
 

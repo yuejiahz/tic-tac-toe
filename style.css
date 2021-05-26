@@ -10,6 +10,10 @@ h1{
     background-color: rgb(240, 235, 173);
     margin: auto;
 }
+body{
+    display: flex;
+    flex-direction: column;
+}
 .space{
     background-color:#fefefe;
     width:121px;
@@ -39,4 +43,21 @@ h1{
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace,sans-serif;
     color: #c45c25;
+}
+#replay{
+    padding:0.2rem;
+    width:7.5rem;
+    height: 5rem;
+    font-size: 1.5rem;
+    font-family: 'Courier New', Courier, monospace,sans-serif;
+    background-color: rgba(223, 62, 62, 0.994);
+    position: relative;
+    left: 230%;
+    bottom: 3.5rem;
+    border-radius: 0.5rem;
+    border: none;
+}
+#replay:hover{
+    color: white;
+    background-color: rgb(189, 27, 27);
 }
