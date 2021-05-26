@@ -1,8 +1,8 @@
 const gameBoard =(()=>{
 
-let gameBoardArr=[[],[],[]];
-let player1Marking=[];
-let player2Marking=[];
+let gameBoardArr = [[],[],[]];
+let player1Marking = [];
+let player2Marking = [];
 
 let winner = null;
 
@@ -14,23 +14,29 @@ let player1=playerFactory('player 1','X',true);
 let player2=playerFactory('player 2','O',false);
 
 const displayController=(()=>{
-    let checkedSpace=0;
-    const spaces=document.querySelectorAll(".space");
-    spaces.forEach((space)=> space.textContent=gameBoardArr[space.id[0]][space.id[1]]);
+
+    let checkedSpace = 0;
+    const spaces = document.querySelectorAll(".space");
+   
+    spaces.forEach((space)=> {
+        space.textContent=gameBoardArr[space.id[0]][space.id[1]];
+    });
+    
     spaces.forEach((space)=> {
         if(space.textContent){
             checkedSpace++;
         }
         if(checkedSpace == 9){
-        winner="It's a fair game";
+        winner="Fair game";
         announceWinner(winner);
         }
-        });
+     });
 });
 
 function checkWinner(playerArr) {
-    let count=[0,0,0,0,0,0,0,0];
-    let winningArr=[
+
+    let count = [0,0,0,0,0,0,0,0];
+    let winningArr = [
     [00,01,02],
     [10,11,12],
     [20,21,22],
@@ -51,13 +57,17 @@ function checkWinner(playerArr) {
             }
         }
     }
-
 }
 
-const playerTurns=((event)=>{
-    if (player1.turn == true && event.target.textContent ==''){     
+const playerTurns =((event)=>{
+    const space=document.getElementById(`${event.target.id}`);
+
+    if (player1.turn == true && event.target.textContent ==''){ 
+            
         gameBoardArr[event.target.id[0]][event.target.id[1]]=player1.markingChoice;
         player1Marking.push(Number(event.target.id));
+        space.style.color='#de87a1';  
+        displayController();
         player1.turn = false;
         player2.turn = true;
         const status = checkWinner(player1Marking);
@@ -65,25 +75,41 @@ const playerTurns=((event)=>{
              winner = 'player 1';
              player2.turn = false;
         }
+
     } else if (player2.turn == true && event.target.textContent ==''){
+    
         gameBoardArr[event.target.id[0]][event.target.id[1]]=player2.markingChoice;
         player2Marking.push(Number(event.target.id));
+        space.style.color='#6988d8';
+        displayController();
         player1.turn = true;
         player2.turn = false;
         const status = checkWinner(player2Marking);
         if(status == true){
-            player1.turn =false;
-            winner = 'player 2';
-       }
+        player1.turn =false;
+        winner = 'player 2';
+      }
     }
-    displayController();
     if(winner){
         announceWinner(winner);
     }
 });
 
 function announceWinner(winner){
-   console.log(winner);    
+
+    if(winner=='player 1'){
+        winner='Congratulations player 1! You Win!';
+    } else if(winner=='player 2'){
+        winner='Congratulations player 2! You Win!';
+    } else if(winner=='Fair game'){
+        winner="It's a fair game.";
+    }
+    
+   document.querySelector('#announce').textContent=winner;    
+}
+
+function reset(){
+
 }
 
 window.addEventListener('click', playerTurns);

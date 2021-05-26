@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 h1{
-    font-family: sans-serif;
+    font-family: 'Dancing Script',serif;
     text-align: center;
-    font-size: 2.8rem;
+    font-size: 4.5rem;
     padding: 1.5rem;
 }
 
@@ -11,9 +12,11 @@ h1{
 }
 .space{
     background-color:#fefefe;
-    width:60.5px;
+    width:121px;
+    height: 121px;
     margin:0;
     font-size: 3.0rem;
+    font-size: 6.5rem;;
     display: flex;
     justify-content: center;
     font-family: sans-serif;
@@ -23,9 +26,17 @@ h1{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    column-gap: 0.6rem;
-    row-gap: 0.6rem;
+    column-gap: 1.2rem;
+    row-gap: 1.2rem;
     background-color: black; 
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
+}
+#announce{
+    text-align: center;
+    font-size: 1.6rem;
+    height: 3rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace,sans-serif;
+    color: #c45c25;
 }
